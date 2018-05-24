@@ -1,43 +1,39 @@
 require 'pry'
 class PigLatinizer
 
-  def piglatinize(input_str)
-    x = (input_str.split(" ").length == 1) ? piglatinize_word(input_str) : piglatinize_sentence(input_str)
-    puts x
-    x
-  end
-
-  private
-
-  def consonant?(char)
-    !char.match(/[aAeEiIoOuU]/)
-  end
-
-  def vowels?(char)
-    char.match(/[aAeEiIoOuU]/)
-  end
-
-  def piglatinize_word(word)
-      binding.pry
-    # word starts with vowel
-    if !consonant?(word[0])
-      word = word + "w"
-
-    # word starts with 3 consonants
-    elsif consonant?(word[0]) && consonant?(word[1]) && consonant?(word[2])
-      word = word.slice(3..-1) + word.slice(0,3)
-    # word starts with 2 consonants
-    elsif consonant?(word[0]) && consonant?(word[1])
-      word = word.slice(2..-1) + word.slice(0,2)
-    # word starts with 1 consonant
-    else
-      word = word.slice(1..-1) + word.slice(0)
-    end
-    word << "ay"
-  end
-
-  def piglatinize_sentence(sentence)
-    sentence.split.collect { |word| piglatinize_word(word) }.join(" ")
+  def piglatinize(word)
+    # if the first letter is a vowel then add 'way'
+    # else count until you hit the first vowel
+    text = word.gsub(/[^a-z]/, '')
+    char = text.split('')
+    binding.pry
+    # how to return the placement value of the first vowel
+    until true
+      char.map
   end
 
 end
+
+from last lesson:
+
+def most_used_letter
+    s1 = text.gsub(/[^a-z]/, '') # gets rid of spaces
+    arr = s1.split('')
+    arr1 = arr.uniq
+    arr2 = {}
+
+    arr1.map do |c|
+      arr2[c] =  arr.count(c)
+    end
+ 
+
+# ("pork")).to eq("orkpay")
+# ("I")).to eq("Iway")
+# ("hello")).to eq("ellohay")
+# ("please")).to eq("easeplay")
+# ("tomorrow")).to eq("omorrowtay")
+# ("until")).to eq("untilway")
+# ("this")).to eq("isthay")
+# ("Enumeration")).to eq("Enumerationway")
+# ("spray")).to eq("ayspray")
+# ("prays")).to eq("ayspray")
