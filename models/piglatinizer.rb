@@ -2,7 +2,7 @@ require 'pry'
 # https://www.youtube.com/watch?v=gCY8ZWi7RKs
 class PigLatinizer
 
-  def piglatinize(input)
+  def piglatinize_word(input)
      vowels = ["a", "e", "i", "o", "u"]
      word = input.gsub(/[^a-z]/i, '')
      #it gets rid of any character if it's not an alphabet
@@ -27,8 +27,9 @@ class PigLatinizer
       end
   end
 
-  def piglatinize_sentence(sentence)
-    sentence.split.collect {|word| piglatinize(word)}.join(" ")
+  def piglatinize(sentence)
+
+    sentence.split.collect {|word| piglatinize_word(word)}.join(" ")
   end
 
 
